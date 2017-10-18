@@ -1,3 +1,6 @@
+#include <string.h>
+#include <stdlib.h>
+#include <stdio.h>
 #ifndef UNTITLED_LISTNODE_H
 #define UNTITLED_LISTNODE_H
 struct ListNode;
