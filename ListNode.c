@@ -6,7 +6,7 @@
 
 struct ListNode
 {
-  char *EmpName
+  char *EmpName;
   struct ListNode *Left;
   struct ListNode *Right;
 };
@@ -111,7 +111,7 @@ struct ListNode *DeleteName(struct ListNode *Node,char *Name)
       while(Jump->Left !=NULL)
 	Jump = Jump ->Left;
       Node->EmpName = Jump ->EmpName;
-      Node->Right = DeletName(Node->Right,Jump->EmpName);
+      Node->Right = DeleteName(Node->Right,Jump->EmpName);
     }
   return Node;
 }

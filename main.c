@@ -22,7 +22,7 @@ void main()
   struct ListNode *Node = NULL;
   printf("Add employees with keyboard \n");
   char Tmp[100];
-  while(gets_ng(Tmp, 100))
+  while(gets_n(Tmp, 100))
     Node = Add(Node,Tmp);
   printf("----------------------------------------------\n");
   printf("Printing database\n");
@@ -39,7 +39,7 @@ void main()
   print(Node);
   printf("-------------------------------------------------\n");
   printf("Adding names from file\n");
-  File *UserFile = fopen("Test1.txt", "r");
+  FILE *UserFile = fopen("Test1.txt", "r");
   if(UserFile == NULL)
     {
       printf("Couldn't open file\n");

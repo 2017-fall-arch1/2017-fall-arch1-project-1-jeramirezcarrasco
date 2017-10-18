@@ -6,9 +6,9 @@ void Empty (struct ListNode *Node);
 struct ListNode *Create(char *EmpNames);
 struct ListNode *Add(struct ListNode *Node,char *Name);
 void print(struct ListNode *Node);
-void printfile(struct ListNode *Node,File *UserFile);
+void printfile(struct ListNode *Node,FILE *UserFile);
 struct ListNode *DeleteName(struct ListNode *Node,char *Name);
-#endfi
+#endif
 
 
 
