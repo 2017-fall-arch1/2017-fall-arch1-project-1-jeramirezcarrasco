@@ -3,14 +3,14 @@
 #include <string.h>
 #include <ctype.h>
 #include "ListNode.h"
-
+//this is where the structure of the "class" is made
 struct ListNode
 {
   char *EmpName;
   struct ListNode *Left;
   struct ListNode *Right;
 };
-
+//creating the "class"
 struct ListNode *Create(char *EmpNames)
 {
   struct ListNode *Node = (struct ListNode *)malloc(sizeof(struct ListNode));
@@ -19,7 +19,7 @@ struct ListNode *Create(char *EmpNames)
   Node ->Right=NULL;
   return Node;
 }
-
+//Method for cleaning the entire tree
 struct ListNode *Clean(struct ListNode *Node)
 {
   Empty(Node);
@@ -27,7 +27,7 @@ struct ListNode *Clean(struct ListNode *Node)
   free(Node);
   return Node;
 }
-
+//Method goes trough the entire tree and deletes every node
 void Empty (struct ListNode *Node)
 {
   if(Node == NULL)
@@ -37,12 +37,13 @@ void Empty (struct ListNode *Node)
   free(Node->EmpName);
   free(Node);
 }
-
+//Method of adding a new node to the tree
 struct ListNode *Add(struct ListNode *node,char *Name)
 {
   int lenghts;
   char *InputName;
   struct ListNode *i;
+  //this part of for deciding the size of the Employee
   for(lenghts = 0;Name[lenghts];lenghts++)
     ;
   InputName = (char *)malloc(lenghts+1);
@@ -51,6 +52,7 @@ struct ListNode *Add(struct ListNode *node,char *Name)
   InputName[lenghts] = 0;
   if(node == NULL)
     return Create(InputName);
+  //using strcmp it checks if the node fields are bigger or smaller
   int Difference = strcmp(node->EmpName,InputName);
   if(Difference==0)
     {
@@ -67,7 +69,7 @@ struct ListNode *Add(struct ListNode *node,char *Name)
     }
   return node;
 }
-
+//method for printing the tree node by traversing the tree
 void print(struct ListNode *Node)
 {
   struct ListNode *i=Node;
@@ -78,7 +80,7 @@ void print(struct ListNode *Node)
       print(i->Right);
     }
 }
-
+//method for deleting a single name in the node
 struct ListNode *DeleteName(struct ListNode *Node,char *Name)
 {
   if(Node == NULL)
@@ -89,6 +91,7 @@ struct ListNode *DeleteName(struct ListNode *Node,char *Name)
   X[strcspn(X, "\n")] = 0;
   char * Y = Node->EmpName;
   Y[strcspn(Y, "\n")] = 0;
+  //this is for checking if name that wants to be deleted is found
   if(strcmp(Name,Node->EmpName)==-1)
     Node->Left=DeleteName(Node->Left,Name);
   else if(strcmp(Name,Node->EmpName)==1)
@@ -110,12 +113,13 @@ struct ListNode *DeleteName(struct ListNode *Node,char *Name)
       struct ListNode *Jump =Node ->Right;
       while(Jump->Left !=NULL)
 	Jump = Jump ->Left;
+      // in case the root has 2 childrens it change from the root with the possible lowest right node
       Node->EmpName = Jump ->EmpName;
       Node->Right = DeleteName(Node->Right,Jump->EmpName);
     }
   return Node;
 }
-
+//printing the text files
 void printfile(struct ListNode *Node,FILE *UserFile)
 {
   struct ListNode *i=Node;
