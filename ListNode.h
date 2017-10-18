@@ -3,6 +3,7 @@
 #include <stdio.h>
 #ifndef UNTITLED_LISTNODE_H
 #define UNTITLED_LISTNODE_H
+// this is where the "classes" interface is declared
 struct ListNode;
 struct ListNode *Clean(struct ListNode *Node);
 void Empty (struct ListNode *Node);
