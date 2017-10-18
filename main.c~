@@ -1,0 +1,11 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include "ListNode.h"
+
+int gets_n(char *s,int limit)
+{
+  char *p = s;
+  char c;
+  if(
+}
